@@ -1,0 +1,21 @@
+small {
+    font-size: 10px;
+}
+
+td img {
+    float: left;
+}
+
+label {
+	padding: 0px 8px;
+}
+
+table img {
+	margin-right: 5px;
+	max-width: 32px;
+}
+
+table small {
+	display: block;
+	margin-top: -4px;
+}

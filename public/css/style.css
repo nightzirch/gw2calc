@@ -1,0 +1,61 @@
+header {
+  background: url("../img/header.jpg") no-repeat;
+  height: 301px;
+}
+header nav {
+  background-color: transparent;
+  border-color: none;
+}
+header nav ul:first-child {
+  margin: 40px 0 0 480px !important;
+  float: left !important;
+}
+header nav ul:first-child li a {
+  font-family: "adobe-text-pro", serif;
+  font-size: 24px;
+  color: #fff;
+}
+header nav ul:first-child li a:hover,
+header nav ul:first-child li a:focus {
+  color: #e2a02f;
+  background-color: transparent !important;
+}
+header nav ul:first-child li ul li a {
+  color: #000;
+}
+header nav ul:first-child li ul li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+ol.breadcrumb {
+  background-color: transparent !important;
+  font-family: "adobe-text-pro", serif;
+  font-size: 18px;
+  margin-left: 0;
+  padding-left: 0;
+}
+ol.breadcrumb > li + li:before {
+  content: url("../img/list-arrow.png") !important;
+}
+ol.breadcrumb > .active {
+  color: #000;
+}
+ol.breadcrumb a {
+  color: #777;
+}
+ol.breadcrumb a:hover {
+  text-decoration: none;
+  color: #b00;
+}
+footer {
+  background-color: #898989;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+footer img {
+  height: 100px;
+  padding-right: 20px;
+}
+footer p {
+  color: #fff;
+  font-size: 12px;
+}
