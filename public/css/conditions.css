@@ -19,3 +19,11 @@ table small {
 	display: block;
 	margin-top: -4px;
 }
+
+.form-group {
+	margin-right: 20px;
+}
+
+.form-group:last-child {
+	margin-right: 0;
+}

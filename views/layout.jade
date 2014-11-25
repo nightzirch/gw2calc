@@ -14,25 +14,50 @@ html
 		script(src="/js/bootstrap.js")
 	body
 		header
-			nav.navbar(role="navigation")
+			.background-container
+			.background-fill
+			
+			nav#top-menu
+				.container
+					ul
+						li
+							a(href="/") gw2calc.com
+						li
+							a(href="http://gw2wardrobe.com") gw2wardrobe.com
+			
+			nav#main-menu.navbar(role="navigation")
 				.container
 					ul.nav.navbar-nav
 						li.active
 							a(href="/") Home
 						li
-							a(href="/wintersday") Wintersday
+							a(href="/dungeoneer") Dungeoneer
 						li
 							a(href="/conditions") Conditions
+						li
+							a(href="/wintersday") Wintersday
 						//-li.dropdown
 							a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-expanded="false") Dropdown
 								ul.dropdown-menu(role="menu")
 									li
 										a(href="#") Action
-			
 		.container
 			block content
-			
-		footer
+		
+		footer#about
+			.background-container
+				.container
+					h1 About Guild Wars 2 Calculators
+					p Guild Wars 2 Calculators was created by Christian Grimsgaard in January 2013. It primary focus was on karma and which boosters to use for maximum karma gain. Since the September 3, 2013 update, karma consumables were not affected by boosters, making Guild Wars 2 Calculators very little helpful. There were still a Condition Damage Calculator available, but an entire website dedicated to a simple Condition Damage Calculator seemed rather pointless, so the developer behind the Guild Wars 2 Calculators project became inactive. 
+					p In November 2014 the project got resurrected like a phoenix from the ashes! The site was rebuilt on top of node.js to make a powerful foundation. More story time telling to be added...
+					
+					h1 Developers
+					.row
+						.col-md-4
+							img.pull-left(src="/img/dev-chris.png")
+							p Christian Grimsgaard is a 24 year old Norwegian with a Bachelor's Degree in Web Development and is shortly done with his Master's Degree in Interaction Design, both at Gjøvik University College in Norway. He loves JavaScript more than snow-covered mountains and skiing. No, he doesn't. A combination of the two, however, makes him giggle of excitement.
+		
+		footer#legal
 			.container
 				img.pull-left(src="/img/logo.png")
 				p Guild Wars 2 Calculators is a non-profit fan-made site for Guild Wars 2. We consist of developers who enjoy Guild Wars 2 and our aim is to create tools and calculators that players may find helpful. Guild Wars 2 Calculators is in no way associated with ArenaNet, NCSOFT Corporation or the Guild Wars 2 trademark.

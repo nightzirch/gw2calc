@@ -1,0 +1,22 @@
+.tokens img {
+	height: 20px;
+}
+
+.dungeon-name {
+	display: none;
+}
+
+.dungeon-gear-container {
+	border: 1px solid #898989;
+	display: inline-block;
+	margin: 2px 0px -5px 2px;
+	cursor: pointer;
+}
+
+.dungeon-gear-container img {
+	opacity: .25;
+}
+
+.dungeon-gear-container.collected img {
+	opacity: 1;
+}

@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Welcome to Guild Wars 2 Calculators' });
+  res.render('dungeoneer/index', { title: 'Dungeoneer' });
 });
 
 module.exports = router;

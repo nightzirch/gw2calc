@@ -6,8 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var wintersday = require('./routes/wintersday');
+var dungeoneer = require('./routes/dungeoneer');
 var conditions = require('./routes/conditions');
+var wintersday = require('./routes/wintersday');
 
 var app = express();
 
@@ -23,8 +24,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/wintersday', wintersday);
+app.use('/dungeoneer', dungeoneer);
 app.use('/conditions', conditions);
+app.use('/wintersday', wintersday);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
