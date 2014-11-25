@@ -10,21 +10,44 @@ var dungeons = [
 ];
 
 $(document).ready(function() {
-	$(".dungeon-gear-container").on("click", function() {
-		$(this).toggleClass("collected");
+	// Activates knockout.js
+	dungeoneer.vm = new DungeoneerModel();
+	ko.applyBindings(dungeoneer.vm);
+	
+	$(".dungeon-gear").on("click", function() {
+		// Find the cost of the item clicked and the tokensCollected
+		var shortname = $(this).attr("data-shortname");
+		var cost = parseInt($(this).attr("data-cost"));
+		var collected = parseInt(dungeoneer.vm.tokensCollected[shortname]());
+		
+		if(!$(this).hasClass("collected")) {
+			// If this does not have .collected
+			$(this).addClass("collected");
+			
+			// Add cost to total
+			dungeoneer.vm.tokensCollected[shortname](collected+cost);
+		}
+		else {
+			// If this have .collected
+			$(this).removeClass("collected");
+			
+			// Remove cost from total
+			dungeoneer.vm.tokensCollected[shortname](collected-cost);
+		}
 	});
 });
 
-function newOrder(array, order) {
-	var newItems = new Array();
+var dungeoneer = {
+	"vm": null,
+	"newOrder": function(array, order) {
+		var newItems = new Array();
 	for(var i = 0; i < order.length; i++) {
 		newItems.push(array[order[i]]);
 	}
 	
 	return JSON.stringify(newItems);
+	}
 }
-
-
 
 
 

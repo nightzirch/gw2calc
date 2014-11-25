@@ -1,6 +1,8 @@
 extends ../layout
 
 block content
+	script(src="/js/knockout-3.2.0.js")
+	script(src="/js/dungeoneer-ko.js")
 	script(src="/js/dungeoneer.js")
 	link(rel="stylesheet", href="/css/dungeoneer.css")
 	
@@ -17,28 +19,28 @@ block content
 			.col-md-3
 				.form-group
 					.input-group
-						input.form-control(placeholder="Ascalonian Tears", value="0", type="number", min="0", max="10290", step="1")
+						input.form-control(placeholder="Ascalonian Tears", type="number", min="0", max="10290", step="1", data-bind='value: tokens["ac"]')
 						.input-group-addon
 							img(src="/img/Ascalonian_Tear.png", alt="Ascalonian Tears", title="Ascalonian Tears")
 							span.dungeon-name Ascalonian Catacombs
 			.col-md-3
 				.form-group
 					.input-group
-						input.form-control(placeholder="Seals of Beetletun", value="0", type="number", min="0", max="10290", step="1")
+						input.form-control(placeholder="Seals of Beetletun", type="number", min="0", max="10290", step="1", data-bind='value: tokens["cm"]')
 						.input-group-addon
 							img(src="/img/Seal_of_Beetletun.png", alt="Seals of Beetletun", title="Seals of Beetletun")
 							span.dungeon-name Caudecus's Manor
 			.col-md-3
 				.form-group
 					.input-group
-						input.form-control(placeholder="Deadly Blooms", value="0", type="number", min="0", max="10290", step="1")
+						input.form-control(placeholder="Deadly Blooms", type="number", min="0", max="10290", step="1", data-bind='value: tokens["ta"]')
 						.input-group-addon
 							img(src="/img/Deadly_Bloom.png", alt="Deadly Blooms", title="Deadly Blooms")
 							span.dungeon-name Twilight Arbor
 			.col-md-3
 				.form-group
 					.input-group
-						input.form-control(placeholder="Manifestos of the Moletariate", value="0", type="number", min="0", max="10290", step="1")
+						input.form-control(placeholder="Manifestos of the Moletariate", type="number", min="0", max="10290", step="1", data-bind='value: tokens["se"]')
 						.input-group-addon
 							img(src="/img/Manifesto_of_the_Moletariate.png", alt="Manifestos of the Moletariate", title="Manifestos of the Moletariate")
 							span.dungeon-name Sorrow's Embrace
@@ -46,28 +48,28 @@ block content
 			.col-md-3
 				.form-group
 					.input-group
-						input.form-control(placeholder="Flame Legion Charr Carvings", value="0", type="number", min="0", max="10290", step="1")
+						input.form-control(placeholder="Flame Legion Charr Carvings", type="number", min="0", max="10290", step="1", data-bind='value: tokens["cof"]')
 						.input-group-addon
 							img(src="/img/Flame_Legion_Charr_Carving.png", alt="Flame Legion Charr Carvings", title="Flame Legion Charr Carvings")
 							span.dungeon-name Citadel of Flame
 			.col-md-3
 				.form-group
 					.input-group
-						input.form-control(placeholder="Symbols of Koda", value="0", type="number", min="0", max="10290", step="1")
+						input.form-control(placeholder="Symbols of Koda", type="number", min="0", max="10290", step="1", data-bind='value: tokens["hotw"]')
 						.input-group-addon
 							img(src="/img/Symbol_of_Koda.png", alt="Symbols of Koda", title="Symbols of Koda")
 							span.dungeon-name Honor of the Waves
 			.col-md-3
 				.form-group
 					.input-group
-						input.form-control(placeholder="Knowledge Crystals", value="0", type="number", min="0", max="10290", step="1")
+						input.form-control(placeholder="Knowledge Crystals", type="number", min="0", max="10290", step="1", data-bind='value: tokens["coe"]')
 						.input-group-addon
 							img(src="/img/Knowledge_Crystal.png", alt="Knowledge Crystals", title="Knowledge Crystals")
 							span.dungeon-name Crucible of Eternity
 			.col-md-3
 				.form-group
 					.input-group
-						input.form-control(placeholder="Shards of Zhaitan", value="0", type="number", min="0", max="10290", step="1")
+						input.form-control(placeholder="Shards of Zhaitan", type="number", min="0", max="10290", step="1", data-bind='value: tokens["arah"]')
 						.input-group-addon
 							img(src="/img/Shard_of_Zhaitan.png", alt="Shards of Zhaitan", title="Shards of Zhaitan")
 							span.dungeon-name The Ruined City of Arah
@@ -80,12 +82,17 @@ block content
 		each dungeon in dungeons
 			.dungeon(class= dungeon.shortname)
 				h3= dungeon.name
-
-				each item, i in dungeon.items
-					.dungeon-gear-container
-						img.pull-left(src=item.icon, title=item.name, alt=item.name)
-						span.gear-cost= item.cost
-							img(src="/img/" + dungeon.currencyImg, alt= dungeon.currency)
+				p You need 
+					span(data-bind='text: tokensLeft["' + dungeon.shortname + '"]') 
+					img.currency-icon(src="/img/" + dungeon.currencyImg, alt= dungeon.currency)
+					|  to complete this collection.
+				
+				.dungeon-gear-container(data-bind='attr: {"data-collected": tokensCollected["'+ dungeon.shortname +'"]}')
+					each item, i in dungeon.items
+						.dungeon-gear(data-cost= item.cost, data-shortname= dungeon.shortname)
+							img.pull-left(src=item.icon, title=item.name, alt=item.name)
+							span.gear-cost= item.cost
+								img.currency-icon(src="/img/" + dungeon.currencyImg, alt= dungeon.currency)
 			
 	
 	

@@ -6,22 +6,22 @@
 	display: none;
 }
 
-.dungeon-gear-container {
+.dungeon-gear {
 	border: 1px solid #898989;
 	display: inline-block;
 	margin: 2px 0px 0px 2px;
 	cursor: pointer;
 }
 
-.dungeon-gear-container > img {
+.dungeon-gear > img {
 	opacity: .2;
 }
 
-.dungeon-gear-container.collected > img {
+.dungeon-gear.collected > img {
 	opacity: 1;
 }
 
-.dungeon-gear-container .gear-cost {
+.dungeon-gear .gear-cost {
 	margin: 44px 0 0 -64px;
 	width: 64px;
 	height: 20px;
@@ -31,11 +31,11 @@
 	text-align: center;
 }
 
-.dungeon-gear-container .gear-cost img {
+.dungeon-collector img.currency-icon {
 	height: 20px;
 	margin-left: 2px;
 }
 
-.dungeon-gear-container.collected .gear-cost {
+.dungeon-gear.collected .gear-cost {
 	visibility: hidden;
 }
