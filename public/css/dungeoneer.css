@@ -9,14 +9,33 @@
 .dungeon-gear-container {
 	border: 1px solid #898989;
 	display: inline-block;
-	margin: 2px 0px -5px 2px;
+	margin: 2px 0px 0px 2px;
 	cursor: pointer;
 }
 
-.dungeon-gear-container img {
+.dungeon-gear-container > img {
 	opacity: .25;
 }
 
-.dungeon-gear-container.collected img {
+.dungeon-gear-container.collected > img {
 	opacity: 1;
+}
+
+.dungeon-gear-container .gear-cost {
+	margin: 44px 0 0 -64px;
+	width: 64px;
+	height: 20px;
+	display: inline-block;
+	background: rgba(0,0,0,.66);
+	color: #fff;
+	text-align: center;
+}
+
+.dungeon-gear-container .gear-cost img {
+	height: 20px;
+	margin-left: 2px;
+}
+
+.dungeon-gear-container.collected .gear-cost {
+	visibility: hidden;
 }
