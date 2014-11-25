@@ -50,4 +50,44 @@ function DungeoneerModel() {
     self.tokensLeft["arah"] = ko.computed(function() {
 		return maxTokens - (parseInt(self.tokens["arah"]()) + parseInt(self.tokensCollected["arah"]()));
 	});
+	
+	// Are you a dungeoneer yet?
+	self.isDungeoneer = ko.computed(function() {
+		var dungeoneer = true;
+		
+		if(self.tokensLeft["ac"]() > 0) {
+			dungeoneer = false;
+			return dungeoneer;
+		}
+		if(self.tokensLeft["cm"]() > 0) {
+			dungeoneer = false;
+			return dungeoneer;
+		}
+		if(self.tokensLeft["ta"]() > 0) {
+			dungeoneer = false;
+			return dungeoneer;
+		}
+		if(self.tokensLeft["se"]() > 0) {
+			dungeoneer = false;
+			return dungeoneer;
+		}
+		if(self.tokensLeft["cof"]() > 0) {
+			dungeoneer = false;
+			return dungeoneer;
+		}
+		if(self.tokensLeft["hotw"]() > 0) {
+			dungeoneer = false;
+			return dungeoneer;
+		}
+		if(self.tokensLeft["coe"]() > 0) {
+			dungeoneer = false;
+			return dungeoneer;
+		}
+		if(self.tokensLeft["arah"]() > 0) {
+			dungeoneer = false;
+			return dungeoneer;
+		}
+		
+		return dungeoneer;
+	});
 }

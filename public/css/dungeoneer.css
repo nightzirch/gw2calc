@@ -2,6 +2,10 @@
 	height: 20px;
 }
 
+.dungeon > h3 {
+	cursor: pointer;
+}
+
 .dungeon-name {
 	display: none;
 }
@@ -39,11 +43,15 @@
 	text-align: center;
 }
 
-.dungeon-collector img.currency-icon {
+img.currency-icon {
 	height: 20px;
 	margin-left: 2px;
 }
 
 .dungeon-gear.collected .gear-cost {
 	visibility: hidden;
+}
+
+img.quaggan {
+	max-width: 300px;
 }
