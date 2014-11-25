@@ -17,7 +17,15 @@
 	opacity: .2;
 }
 
+.dungeon-gear:hover > img {
+	opacity: .4;
+}
+
 .dungeon-gear.collected > img {
+	opacity: 1;
+}
+
+.dungeon-gear.selected > img {
 	opacity: 1;
 }
 
