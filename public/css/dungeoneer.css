@@ -14,7 +14,7 @@
 }
 
 .dungeon-gear-container > img {
-	opacity: 1;
+	opacity: .2;
 }
 
 .dungeon-gear-container.collected > img {
