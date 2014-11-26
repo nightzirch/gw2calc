@@ -1,9 +1,15 @@
 extends layout
 
 block content
-	h1= title
+	h1 Welcome to #{title}!
 	
-	p #{title} is currently under development. If you would like to contribute, feel free to fork our 
+	p Welcome to #{title} 2.0! This site was originally created in January 2013 and it primarily focused on karma and which boosters to use for maximum karma gain. Since the September 3, 2013 update, karma consumables were not affected by boosters, making #{title} very little useful. There were still a Condition Damage Calculator available, but an entire website dedicated to a simple Condition Damage Calculator seemed rather pointless, so I kind of lost motivation developing this project.
+
+	p However, in November 2014 the project got resurrected like a phoenix from the ashes! The site was rebuilt on top of node.js to make for a powerful foundation. #{title}'s most recent addition is the Dungeoneer Calculator which lets the user keep track of their progression towards the dungeoneer title! Type the amount of dungeon tokens that are in your wallet and select which weapons and armors are already collected in the dungeon collections. It then calculates how many tokens you are short of your goal and how many days of full dungeon runs you have until you are a true dungeoneer!
+	
+	p #{title} is also currently under development and my vision for this site is to make it 
+		em the
+		|  go-to resource for Guild Wars 2 calculators. If you would like to contribute with a project of your own or just in general, feel free to fork our 
 		a(href="https://github.com/nightzirch/gw2calc") repo
 		|  or contact me through 
 		a(href="mailto:mail (at) christiangrimsgaard.net") email

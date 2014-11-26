@@ -18,6 +18,9 @@ block content
 		button.btn-save.btn.btn-primary.pull-right.btn-save(type="button", data-loading-text="Saving...")
 			span.glyphicon.glyphicon-floppy-disk(aria-hidden="true")
 			| Save
+		//button.btn-copy.btn.btn-default.pull-right(type="button", data-loading-text="Copying...")
+			span.glyphicon.glyphicon-send(aria-hidden="true")
+			| Copy
 	
 	h2 How many dungeon tokens do you have?
 	.dungeon-tokens
@@ -109,9 +112,12 @@ block content
 		button.btn-delete.btn.btn-danger.pull-right(type="button", data-loading-text="Resetting...") 
 			span.glyphicon.glyphicon-remove(aria-hidden="true")
 			| Reset
-		button.btn-save.btn.btn-primary.pull-right.btn-save(type="button", data-loading-text="Saving...")
+		button.btn-save.btn.btn-primary.pull-right(type="button", data-loading-text="Saving...")
 			span.glyphicon.glyphicon-floppy-disk(aria-hidden="true")
 			| Save
+		//button.btn-copy.btn.btn-default.pull-right(type="button", data-loading-text="Copying...")
+			span.glyphicon.glyphicon-send(aria-hidden="true")
+			| Copy
 			
 	each dungeon in dungeons
 		p(data-bind='visible: tokensLeft["' + dungeon.shortname + '"]() > 0') You need 

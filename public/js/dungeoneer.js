@@ -37,6 +37,7 @@ var dungeoneer = {
 			dungeoneer.listeners.dungeonGearAll();
 			dungeoneer.listeners.save();
 			dungeoneer.listeners.delete();
+			dungeoneer.listeners.copy();
 		},
 		"dungeonGear": function() {
 			$(".dungeon-gear:not(.collect-all)").on("click", function() {
@@ -121,6 +122,12 @@ var dungeoneer = {
 				
 				// Set loading state
 				dungeoneer.buttonLoading($(this), "Done");
+			});
+		},
+		"copy": function() {
+			$(".btn-copy").on("click", function() {				
+				// Set loading state
+				dungeoneer.buttonLoading($(this), "Copied");
 			});
 		}
 	},
