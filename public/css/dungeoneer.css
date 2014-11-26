@@ -55,3 +55,7 @@ img.currency-icon {
 img.quaggan {
 	max-width: 300px;
 }
+
+.btn-save {
+	margin-right: 6px;
+}

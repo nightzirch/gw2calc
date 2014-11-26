@@ -172,3 +172,6 @@ footer#legal p {
   color: #fff;
   font-size: 12px;
 }
+.glyphicon {
+  margin-right: 6px;
+}

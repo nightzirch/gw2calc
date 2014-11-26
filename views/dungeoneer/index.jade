@@ -12,6 +12,12 @@ block content
 		li.active= title
 	
 	h1= title
+		button.btn-delete.btn.btn-danger.pull-right(type="button", data-loading-text="Resetting...") 
+			span.glyphicon.glyphicon-remove(aria-hidden="true")
+			| Reset
+		button.btn-save.btn.btn-primary.pull-right.btn-save(type="button", data-loading-text="Saving...")
+			span.glyphicon.glyphicon-floppy-disk(aria-hidden="true")
+			| Save
 	
 	h2 How many dungeon tokens do you have?
 	.dungeon-tokens
@@ -91,7 +97,7 @@ block content
 				
 				.dungeon-gear-container.collapse.in(id="dungeon-gear-container-" + dungeon.shortname, data-bind='attr: {"data-collected": tokensCollected["'+ dungeon.shortname +'"]}')
 					each item, i in dungeon.items
-						.dungeon-gear(data-cost= item.cost, data-shortname= dungeon.shortname)
+						.dungeon-gear(data-gear-number= i, data-cost= item.cost, data-shortname= dungeon.shortname, class="dungeon-gear-" + dungeon.shortname)
 							img.pull-left(src=item.icon, title=item.name, alt=item.name)
 							span.gear-cost= item.cost
 								img.currency-icon(src="/img/" + dungeon.currencyImg, alt= dungeon.currency)
@@ -100,6 +106,13 @@ block content
 							span.gear-cost All
 
 	h2 Summary
+		button.btn-delete.btn.btn-danger.pull-right(type="button", data-loading-text="Resetting...") 
+			span.glyphicon.glyphicon-remove(aria-hidden="true")
+			| Reset
+		button.btn-save.btn.btn-primary.pull-right.btn-save(type="button", data-loading-text="Saving...")
+			span.glyphicon.glyphicon-floppy-disk(aria-hidden="true")
+			| Save
+			
 	each dungeon in dungeons
 		p(data-bind='visible: tokensLeft["' + dungeon.shortname + '"]() > 0') You need 
 			span(data-bind='text: tokensLeft["' + dungeon.shortname + '"]') 
@@ -114,7 +127,8 @@ block content
 				|  in 
 				span(data-bind='text: Math.ceil(tokensLeft["' + dungeon.shortname + '"]() / ' + (dungeon.paths * 60) + ')')
 				|  days.
-		p.text-muted Note: this does not account for Bags of Wondrous Goods, which drop from champion and legendary enemies in dungeons and contain 3 dungeon tokens. So, in reality you will get more than 60 tokens per daily path.
+		
+		p.text-muted(style="margin-top: 30px") Note: this does not account for Bags of Wondrous Goods, which drop from champion and legendary enemies in dungeons and contain 3 dungeon tokens. So, in reality you will get more than 60 tokens per daily path.
 	
 	div(data-bind='visible: isDungeoneer()')
 		h3.text-success Wow! Congratulations, senpai! You are now a Dungeoneer!

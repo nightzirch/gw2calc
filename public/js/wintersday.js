@@ -164,7 +164,7 @@ function generateTable(called) {
 	
 	$("#table")[0].innerHTML = table;
 	
-	// If this functino was called
+	// If this function was called
 	if(called) {
 		// Reset state of refresh button
 		var btn = $("#refresh");

@@ -16,6 +16,9 @@ $(document).ready(function() {
 	
 	// Activate listeners
 	dungeoneer.listeners.all();
+	
+	// Hmmm... Where were we again?
+	dungeoneer.storage.get();
 });
 
 var dungeoneer = {
@@ -32,6 +35,8 @@ var dungeoneer = {
 		"all": function() {
 			dungeoneer.listeners.dungeonGear();
 			dungeoneer.listeners.dungeonGearAll();
+			dungeoneer.listeners.save();
+			dungeoneer.listeners.delete();
 		},
 		"dungeonGear": function() {
 			$(".dungeon-gear:not(.collect-all)").on("click", function() {
@@ -85,7 +90,151 @@ var dungeoneer = {
 				}
 				
 			});
+		},
+		"save": function() {
+			$(".btn-save").on("click", function() {
+				// Call operator for storage
+				dungeoneer.storage.set();
+				
+				// Set loading state
+				dungeoneer.buttonLoading($(this), "Saved");
+				
+			});
+		},
+		"delete": function() {
+			$(".btn-delete").on("click", function() {
+				// Call operator for deletion
+				dungeoneer.storage.clear();
+				
+				// Seset all tokens...
+				dungeoneer.vm.tokens["ac"](0);
+				dungeoneer.vm.tokens["cm"](0);
+				dungeoneer.vm.tokens["ta"](0);
+				dungeoneer.vm.tokens["se"](0);
+				dungeoneer.vm.tokens["cof"](0);
+				dungeoneer.vm.tokens["hotw"](0);
+				dungeoneer.vm.tokens["coe"](0);
+				dungeoneer.vm.tokens["arah"](0);
+				
+				// ...and all collected items
+				$(".dungeon-gear.collected").trigger("click");
+				
+				// Set loading state
+				dungeoneer.buttonLoading($(this), "Done");
+			});
 		}
+	},
+	"storage": {
+		"set": function() {
+			// How many tokens do we have?
+			var tokens = {
+				"ac": dungeoneer.vm.tokens["ac"](),
+				"cm": dungeoneer.vm.tokens["cm"](),
+				"ta": dungeoneer.vm.tokens["ta"](),
+				"se": dungeoneer.vm.tokens["se"](),
+				"cof": dungeoneer.vm.tokens["cof"](),
+				"hotw": dungeoneer.vm.tokens["hotw"](),
+				"coe": dungeoneer.vm.tokens["coe"](),
+				"arah": dungeoneer.vm.tokens["arah"]()
+			}
+			
+			// Which items have we collected?
+			var collected = {
+				"ac": [],
+				"cm": [],
+				"ta": [],
+				"se": [],
+				"cof": [],
+				"hotw": [],
+				"coe": [],
+				"arah": []
+			}
+			
+			var collectedItems = $(".dungeon-gear.collected");
+			for (var i = 0; i < collectedItems.length; i++) {
+				var item = $(collectedItems)[i];
+				var dungeon = $(item).attr("data-shortname");
+				var number = $(item).attr("data-gear-number");
+				
+				collected[dungeon].push(number);
+			}
+			
+			// Stringify and save in localStorage
+			localStorage.setItem("tokens", JSON.stringify(tokens));
+			localStorage.setItem("collected", JSON.stringify(collected));
+		},
+		"get": function() {
+			// First check if the data exists
+			if(localStorage.getItem("tokens") != null && localStorage.getItem("collected") != null){
+				// Get the values from localStorage
+				var tokens = JSON.parse(localStorage.getItem("tokens"));
+				var collected = JSON.parse(localStorage.getItem("collected"));
+
+				// So, remind me again how many tokens we have?
+				dungeoneer.vm.tokens["ac"](tokens["ac"]);
+				dungeoneer.vm.tokens["cm"](tokens["cm"]);
+				dungeoneer.vm.tokens["ta"](tokens["ta"]);
+				dungeoneer.vm.tokens["se"](tokens["se"]);
+				dungeoneer.vm.tokens["cof"](tokens["cof"]);
+				dungeoneer.vm.tokens["hotw"](tokens["hotw"]);
+				dungeoneer.vm.tokens["coe"](tokens["coe"]);
+				dungeoneer.vm.tokens["arah"](tokens["arah"]);
+
+				// Nice! What about the items?
+				var dungeons = ["ac","cm","ta","se","cof","hotw","coe","arah"];
+				for (var i = 0; i < dungeons.length; i++) {
+					for (var y = 0; y < collected[dungeons[i]].length; y++) {
+						$(".dungeon-gear-" + dungeons[i] + "[data-gear-number=" + collected[dungeons[i]][y] + "]").trigger("click");
+					}
+					
+					// Check if everything is collected
+					var notCollected = $(".dungeon-gear-"  + dungeons[i] + ":not(.collected)");
+					if (notCollected.length == 0) {
+						// If you have collected everything, let's hide the container
+						$("#dungeon-gear-container-" + dungeons[i]).removeClass("in");
+					}
+				}
+			}
+		},
+		"clear": function() {
+			localStorage.removeItem("tokens");
+			localStorage.removeItem("collected");
+		}
+	},
+	"buttonLoading": function(btn, textFinished) {
+		// Set loading state
+		$(btn).button('loading');
+
+		setTimeout(function() {
+			btn[0].innerHTML = textFinished;
+		},1);
+
+		setTimeout(function() {
+			$(btn).button('reset');
+		},1000);
+	}
+}
+
+var user = {
+	"tokens": {
+		"ac": null,
+		"cm": null,
+		"ta": null,
+		"se": null,
+		"cof": null,
+		"hotw": null,
+		"coe": null,
+		"arah": null
+	},
+	"collected": {
+		"ac": [],
+		"cm": [],
+		"ta": [],
+		"se": [],
+		"cof": [],
+		"hotw": [],
+		"coe": [],
+		"arah": []
 	}
 }
 
