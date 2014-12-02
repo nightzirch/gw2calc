@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var dungeoneer = require('./routes/dungeoneer');
 var conditions = require('./routes/conditions');
 var wintersday = require('./routes/wintersday');
+var exchange = require('./routes/exchange');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/', index);
 app.use('/dungeoneer', dungeoneer);
 app.use('/conditions', conditions);
 app.use('/wintersday', wintersday);
+app.use('/exchange', exchange);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+	script(src="/js/money.min.js")
+	script(src="/js/exchange.js")
+	link(rel="stylesheet", href="/css/exchange.css")
+	
+	ol.breadcrumb
+		li
+			a(href="/") Home
+		li.active= title
+	
+	h1= title
+	
+	select#currency.form-control(disabled)
+		option Loading...
