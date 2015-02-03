@@ -13,6 +13,17 @@ function DungeoneerModel() {
     self.tokens["coe"] = ko.observable(0);
     self.tokens["arah"] = ko.observable(0);
 	
+	// Daily paths
+	self.dailyPaths = new Array();
+	self.dailyPaths["ac"] = ko.observable(0);
+    self.dailyPaths["cm"] = ko.observable(0);
+    self.dailyPaths["ta"] = ko.observable(0);
+    self.dailyPaths["se"] = ko.observable(0);
+    self.dailyPaths["cof"] = ko.observable(0);
+    self.dailyPaths["hotw"] = ko.observable(0);
+    self.dailyPaths["coe"] = ko.observable(0);
+    self.dailyPaths["arah"] = ko.observable(0);
+	
 	// Dungeon Tokens worth of equipment
 	self.tokensCollected = new Array();
 	self.tokensCollected["ac"] = ko.observable(0);
