@@ -290,6 +290,7 @@ var dungeoneer = {
 		},
 		"clear": function() {
 			localStorage.removeItem("tokens");
+			localStorage.removeItem("daily");
 			localStorage.removeItem("collected");
 		}
 	},
